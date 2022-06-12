@@ -1,0 +1,22 @@
+{
+  "name": "pkoch-public-bucket",
+  "version": "1.0.0",
+  "description": "Access to the pkoch-public bucket.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pkoch/pkoch-public-bucket.git"
+  },
+  "author": "Paulo Köch <hi@pko.ch>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pkoch/pkoch-public-bucket/issues"
+  },
+  "homepage": "https://github.com/pkoch/pkoch-public-bucket#readme",
+  "devDependencies": {
+    "wrangler": "^2.0.9"
+  }
+}
