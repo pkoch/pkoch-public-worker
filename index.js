@@ -8,8 +8,20 @@ async function handleRequest(request) {
 
       switch (request.method) {
         case 'GET':
-          const object = await PUBLIC_BUCKET.get(key);
+          if(key === '') {
+            const source = "https://github.com/pkoch/pkoch-public-bucket";
 
+            return new Response(
+              "I need a key. Check the source at " + source + "\n",
+              {
+                status: 302,
+                headers: {
+                  Location: source,
+                },
+              });
+          }
+
+          const object = await PUBLIC_BUCKET.get(key);
           if (!object || !object.body) {
             return new Response('Object Not Found', { status: 404 });
           }
@@ -18,9 +30,7 @@ async function handleRequest(request) {
           object.writeHttpMetadata(headers);
           headers.set('etag', object.httpEtag);
 
-          return new Response(object.body, {
-            headers,
-          });
+          return new Response(object.body, {headers});
 
         default:
           return new Response('Method Not Allowed', {
