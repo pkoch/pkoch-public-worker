@@ -25,6 +25,8 @@ node_modules/.bin/wrangler dev index.js
 
 ## Publish
 
+Just push to master. Alternatively, run:
+
 ```bash
 node_modules/.bin/wrangler publish index.js
 ```
