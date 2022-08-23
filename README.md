@@ -6,10 +6,11 @@ That sweet sweet free egress. ❤️
 
 ```bash
 echo 'It worked!' > test.txt
-AWS_PROFILE=r2 aws s3 cp --endpoint-url https://9fbfc5a598619165478af4be82890d28.r2.cloudflarestorage.com test.txt s3://pkoch-public/test.txt
-```
 
-`9fbfc5a598619165478af4be82890d28` is my CF account id.
+AWS_PROFILE=r2 \
+CF_ACCOUNT_ID=9fbfc5a598619165478af4be82890d28 \
+aws s3 cp --endpoint-url "https://$CF_ACCOUNT_ID.r2.cloudflarestorage.com" test.txt s3://pkoch-public/test.txt
+```
 
 ## Get them back over HTTP
 
