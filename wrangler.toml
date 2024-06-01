@@ -1,7 +1,7 @@
 name = "public-bucket"
-compatibility_flags = []
+main = "index.js"
+compatibility_date = "2022-07-12"
 workers_dev = true
-compatibility_date = "2022-06-12"
 account_id = "9fbfc5a598619165478af4be82890d28"
 
 [[r2_buckets]]
