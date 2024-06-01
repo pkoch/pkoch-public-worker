@@ -12,6 +12,14 @@ CF_ACCOUNT_ID=9fbfc5a598619165478af4be82890d28 \
 aws s3 cp --endpoint-url "https://$CF_ACCOUNT_ID.r2.cloudflarestorage.com" test.txt s3://pkoch-public/test.txt
 ```
 
+## Getting files into the bucket with wrangler
+
+```bash
+echo 'It worked!' > test.txt
+
+npx wrangler r2 object put pkoch-public/test.txt --file=test.txt
+```
+
 ## Get them back over HTTP
 
 ```bash
@@ -21,13 +29,14 @@ curl https://public-bucket.pkoch.workers.dev/test.txt
 ## Dev
 
 ```bash
-node_modules/.bin/wrangler dev index.js
+echo 'It worked on local!' | npx wrangler r2 object put pkoch-public/test.txt -p --local
+npm run dev
 ```
 
-## Publish
+## Deploy
 
 Just push to master. Alternatively, run:
 
 ```bash
-node_modules/.bin/wrangler publish index.js
+npm run deploy
 ```

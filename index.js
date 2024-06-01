@@ -1,8 +1,5 @@
-addEventListener('fetch', async(event) => {
-    event.respondWith(handleRequest(event.request, event.env));
-});
-
-async function handleRequest(request) {
+export default {
+	async fetch(request, env) {
       const url = new URL(request.url);
       const key = url.pathname.slice(1);
 
@@ -21,9 +18,9 @@ async function handleRequest(request) {
               });
           }
 
-          const object = await PUBLIC_BUCKET.get(key);
+          const object = await env.PUBLIC_BUCKET.get(key);
           if (!object || !object.body) {
-            return new Response('Object Not Found', { status: 404 });
+            return new Response(`Object Not Found: ${key}`, { status: 404 });
           }
 
           const headers = new Headers();
@@ -40,4 +37,5 @@ async function handleRequest(request) {
             },
           });
       }
-  };
+  }
+}
